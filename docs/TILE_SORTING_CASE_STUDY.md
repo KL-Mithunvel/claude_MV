@@ -219,6 +219,25 @@ This is what made every cross-model claim above checkable. `claude_MV`
 standardizes it as `tools/standard_results.py` + `docs/RESULTS_STANDARD.md`,
 adding a single composite `results_card.png` per model.
 
+## 11. Addendum (2026-09-05): real conveyor footage broke the calibrated thresholds
+
+A later Tile_Sorting commit added `development/process_conveyor_video.py` —
+a line-crossing demo over the first real conveyor-belt phone footage. Run
+cold with the calibrated `camera_node` HSV values, it counted **zero tiles**:
+those thresholds were calibrated on close-up checkerboard photos, and on the
+conveyor footage the same hue range also matched the wood benchtop (nearly
+identical hue to terracotta), so "the tile" it found was the whole benchtop
+and no departure ever fired. The fix located the belt lane fresh each frame
+by the belt's own distinctive green hue (the phone shot drifts ~100px — a
+hardcoded crop was also unsafe) and ran tile segmentation only inside that
+lane, reusing the pure `segment_tile()` unchanged.
+
+Two reinforcing lessons for the baseline: **thresholds calibrated under one
+capture condition do not transfer to another** (Gate 1's scale/lighting
+caveat, now demonstrated on real footage, not just predicted), and **anchor
+detection to a scene reference that is actually distinctive** (the green
+belt), locating it per-frame rather than assuming a static camera.
+
 ---
 
 ## The lessons → rules map

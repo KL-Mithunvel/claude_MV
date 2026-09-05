@@ -3,6 +3,12 @@
 ## In Progress
 
 ## Done
+- [x] Vendor the ten official Roboflow skills (roboflow/computer-vision-skills
+  @ 5816914) into `.CLAUDE/skill/`, add root `.mcp.json` (Roboflow MCP
+  server), `docs/ROBOFLOW_SETUP.md`, `requirements-roboflow.txt`, and the
+  Roboflow tools (`roboflow_check.py`, `roboflow_upload.py`,
+  `roboflow_eval.py` → Gate-4 standard results); case-study addendum for
+  Tile_Sorting's new conveyor-footage tool.
 - [x] Turn claude_MV into the machine-vision baseline/template repo — CLAUDE.md
   with the four gates (data understanding, compute survey,
   deployment-target-first, standard results), docs (MV workflow, Tile_Sorting

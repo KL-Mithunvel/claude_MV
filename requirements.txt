@@ -10,3 +10,5 @@
 numpy>=1.26
 matplotlib>=3.8
 PyYAML>=6.0
+# Roboflow projects: additionally install requirements-roboflow.txt
+# (see docs/ROBOFLOW_SETUP.md).

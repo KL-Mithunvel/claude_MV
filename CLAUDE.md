@@ -182,6 +182,26 @@ Follow the Tile_Sorting shape (adapt names, keep the separations):
 
 ---
 
+## Roboflow Integration
+
+When a project uses Roboflow (dataset hosting, labeling, hosted baselines,
+active learning), follow `docs/ROBOFLOW_SETUP.md`:
+
+- Credentials live ONLY in a gitignored `.env` (`ROBOFLOW_API_KEY`,
+  `ROBOFLOW_WORKSPACE`) — never committed, never pasted into chat. Verify a
+  new machine/project with `python tools/roboflow_check.py`.
+- The root `.mcp.json` registers the official Roboflow MCP server; the ten
+  official `roboflow-*` skills are vendored in `.CLAUDE/skill/` (activation
+  routes in `.CLAUDE/skill/ROBOFLOW_SKILLS_README.md`).
+- Uploads are scripted (`tools/roboflow_upload.py`) — the local raw dataset
+  stays authoritative. Hosted-model evaluations go through
+  `tools/roboflow_eval.py` so they produce the same Gate-4 standard results
+  as local models.
+- Gate 3 still applies: hosted training that exports no weights (Roboflow's
+  hosted ViT) can never be the production path for a local/edge target.
+
+---
+
 ## Development Rules
 
 1. **Hardware I/O stays separate from pure logic.** Every module touching real

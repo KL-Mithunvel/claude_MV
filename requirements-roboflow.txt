@@ -1,0 +1,7 @@
+# Roboflow integration deps (docs/ROBOFLOW_SETUP.md) — install on top of
+# requirements.txt when a project uses Roboflow:
+#   pip install -r requirements-roboflow.txt
+# Versions matched to what Tile_Sorting runs in production use (2026-09-05).
+roboflow>=1.4
+python-dotenv>=1.2
+requests>=2.32
